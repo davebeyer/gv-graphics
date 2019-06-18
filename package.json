@@ -1,0 +1,30 @@
+{
+  "name": "gv-graphics",
+  "version": "1.0.0",
+  "description": "For creating simple graphics with ImageMagick & Pango ",
+  "main": "index.js",
+  "scripts": {
+    "lint": "tslint -t verbose -e './**/node_modules/**'  './**/*.ts' ; exit 0",
+    "build": "tsc",
+    "postinstall": "npm run build",
+    "reinstall": "rm -rf node_modules && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davebeyer/gv-graphics.git"
+  },
+  "author": "Dave Beyer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davebeyer/gv-graphics/issues"
+  },
+  "homepage": "https://github.com/davebeyer/gv-graphics#readme",
+  "dependencies": {
+    "@types/node": "^10.14.9",
+    "async": "^2.6.2",
+    "gm": "^1.23.1",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.17.0",
+    "typescript": "^3.5.2"
+  }
+}
