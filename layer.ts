@@ -147,11 +147,13 @@ export class GraphicLayer {
                 style = textLines[i][j].style;
                 text  = textLines[i][j].text;
 
-                if (style.size)   { size   = style.size;   }
-                if (style.weight) { weight = style.weight; }
-                if (style.color)  { color  = style.color;  }
-                if (style.family) { family = style.family; }
-                if (style.rise)   { rise   = style.rise;   }
+                if (style != null) {
+                    if (style.size)   { size   = style.size;   }
+                    if (style.weight) { weight = style.weight; }
+                    if (style.color)  { color  = style.color;  }
+                    if (style.family) { family = style.family; }
+                    if (style.rise)   { rise   = style.rise;   }
+                }
 
                 /* tslint:disable */
                 pangoStr += `<span size="${size * 1000}" color="${color}" weight="${weight}" font_family="${family}" rise="${rise * 10000}">${text}</span>`;
