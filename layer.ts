@@ -57,7 +57,12 @@ export class GraphicLayer {
             }
 
             if (options.bkgndOutline) {
-                this.imObj.stroke(options.bkgndOutline, DF(1));
+                let bkgndOutlineWidth = 1;
+                if (options.bkgndOutlineWidth) {
+                    bkgndOutlineWidth = options.bkgndOutlineWidth;
+                }
+
+                this.imObj.stroke(options.bkgndOutline, DF(bkgndOutlineWidth));
             }
 
             if (options.bkgndRounded) {
