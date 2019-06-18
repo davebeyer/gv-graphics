@@ -171,15 +171,13 @@ export class GraphicLayer {
     public write() {
         let self = this;
 
-        return new Promise( (resolve, reject) => {
+        return new Promise( (resolve /*, reject */) => {
 
             if (densityFactor !== 1) {
                 this.imObj.scale(densityScale, densityScale);
             }
             this.imObj.write(self.imgPath, err => {
                 resolve({err : err, imgPath : self.imgPath});
-            }).catch( err => {
-                reject(err);
             });
         });
     }
