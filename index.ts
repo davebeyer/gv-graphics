@@ -1,5 +1,6 @@
 let im    = require('gm').subClass({imageMagick: true});
 let async = require('async');
+let fs    = require('fs-extra');
 
 import {GraphicLayer}  from './layer';
 
@@ -98,6 +99,7 @@ export class Graphic {
                 }
 
             }).then( imgPath => {
+
                 resolve(imgPath);
 
             }).catch( err => {
@@ -129,15 +131,39 @@ export class Graphic {
             });
         }
 
+        function mergeAllLayers() {
+            return new Promise( (resolve, reject) => {
+                async.eachOfSeries(self.layers.slice(1), mergeLayer, err => {
+                    if (err) {
+                        let msg = `Error encountered while merging images into ${baseImagePath}`;
+                        self.logger.error({err : err}, msg);
+                        reject(msg);
+                    }
+                    return resolve();
+                });
+            });
+        }
+
         return new Promise( (resolve, reject) => {
 
-            async.eachOfSeries(self.layers.slice(1), mergeLayer, err => {
-                if (err) {
-                    let msg = `Error encountered while merging images into ${baseImagePath}`;
-                    self.logger.error({err : err}, msg);
-                    return reject(msg);
+            mergeAllLayers().then( () => {
+
+                // Remove the temporary images for layers > 1,
+                // so start loop at 1
+                let proms = [];
+                let imgPath;
+                for (let i = 1; i < self.layers.length; i++) {
+                    imgPath = self.layers[i].imgPath;
+                    proms.push(fs.remove(imgPath));
                 }
+                return Promise.all(proms);
+
+            }).then( () => {
+
                 resolve(baseImagePath);
+
+            }).catch(err => {
+                reject(err);
             });
 
         });
