@@ -17,6 +17,7 @@ export class Graphic {
 
     imgType : string;
     imgDir  : string;
+    imgName : string;
 
     constructor(width:number, height:number, logger:any, imgDir:string, options?:any) {
         if (!options) { options = {}; }
@@ -27,8 +28,9 @@ export class Graphic {
         this.width   = width;
         this.height  = height;
 
-        this.imgType = options.imgType ? options.imgType : 'png';
+        this.imgType = options.imgType  ? options.imgType : 'png';
         this.imgDir  = imgDir;
+        this.imgName = options.fileName ? options.fileName : null;
 
         // Init array with first layer
         this.layers = [];

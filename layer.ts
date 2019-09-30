@@ -193,11 +193,15 @@ export class GraphicLayer {
         let now   = (new Date()).toISOString();
         let rand  = Math.random() * 100000;
 
-        let imgBase = path.join(this.graphic.imgDir, `${LibAbbrev}_${now}_${rand}`);
-        if (layerNum === 0) {
-            return `${imgBase}.${this.graphic.imgType}`;
+        if (this.graphic.imgName) {
+            return  path.join(this.graphic.imgDir, this.graphic.imgName)
         } else {
-            return `${imgBase}-${layerNum}.${this.graphic.imgType}`;
+            let imgBase = path.join(this.graphic.imgDir, `${LibAbbrev}_${now}_${rand}`);
+            if (layerNum === 0) {
+                return `${imgBase}.${this.graphic.imgType}`;
+            } else {
+                return `${imgBase}-${layerNum}.${this.graphic.imgType}`;
+            }
         }
     }
 }
