@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davebeyer/gv-graphics.git"
+    "url": "git+https://github.com/groupvine/gv-graphics.git"
   },
   "author": "Dave Beyer",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/davebeyer/gv-graphics/issues"
+    "url": "https://github.com/groupvine/gv-graphics/issues"
   },
-  "homepage": "https://github.com/davebeyer/gv-graphics#readme",
+  "homepage": "https://github.com/groupvine/gv-graphics#readme",
   "dependencies": {
     "@types/node": "^10.14.9",
     "async": "^2.6.3",
