@@ -64,7 +64,7 @@ export class ImageObj {
         });
     }
 
-    // E.g., resize(300, 100, 80, newPath)
+    // E.g., resize(300, 100, 90, newPath)
     resize(width:number, height:number, qual:number, newSuffix:string) {
         return new Promise( (resolve, reject) => {
             let newName = this.origName + newSuffix + this.extStr;
@@ -74,7 +74,8 @@ export class ImageObj {
                 // "^" resize option resizes until either width
                 // or height is reached (other is allowed to be greater)
                 // See -convert and -geometry here: http://www.graphicsmagick.org/GraphicsMagick.html#details-resize
-                resize(width, height, "^").
+                // resize(width, height, "^").
+                resize(width, height).   // resize to fit while maintaining proportions
                 quality(qual).
                 write(newPath, (err) => {
                     if (err) {
