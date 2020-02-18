@@ -75,7 +75,7 @@ export class ImageObj {
                 // or height is reached (other is allowed to be greater)
                 // See -convert and -geometry here: http://www.graphicsmagick.org/GraphicsMagick.html#details-resize
                 // resize(width, height, "^").
-                resize(width, height).   // resize to fit while maintaining proportions
+                resize(width, height, ">").   // resize to fit while maintaining proportions, but only shrink, never enlarge
                 quality(qual).
                 write(newPath, (err) => {
                     if (err) {
