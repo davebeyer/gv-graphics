@@ -132,7 +132,7 @@ export class Graphic {
         }
 
         function mergeAllLayers() {
-            return new Promise( (resolve, reject) => {
+            return new Promise<void>( (resolve, reject) => {
                 async.eachOfSeries(self.layers.slice(1), mergeLayer, err => {
                     if (err) {
                         let msg = `Error encountered while merging images into ${baseImagePath}`;
